@@ -20,7 +20,6 @@ cmake-*
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -28,8 +27,6 @@ cmake-*
 
 # Compiled Static libraries
 *.lai
-*.la
-*.a
 *.lib
 
 # Executables
