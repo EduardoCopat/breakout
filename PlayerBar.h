@@ -7,17 +7,27 @@
 
 
 #include <SDL_render.h>
+#include <SDL_events.h>
 
 class PlayerBar {
 public:
     PlayerBar(SDL_Renderer* renderer, int windowWidth, int windowHeight);
     void render();
+
+    void handleEvent(SDL_Event event);
+
+    void move();
+
 private:
     SDL_Renderer *renderer;
     int windowWidth;
     int windowHeight;
     int barWidth;
     int barHeight;
+    static const int SPEED = 10;
+    int velocityX;
+    int x;
+    int y;
 };
 
 

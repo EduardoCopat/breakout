@@ -52,8 +52,8 @@ bool init()
         }
         else
         {
-            //Create renderer for window
-            gRenderer = SDL_CreateRenderer( gWindow, -1, SDL_RENDERER_ACCELERATED );
+            //Create renderer for window with vSync
+            gRenderer = SDL_CreateRenderer( gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC );
             if( gRenderer == NULL )
             {
                 printf( "Renderer could not be created! SDL Error: %s\n", SDL_GetError() );
@@ -134,12 +134,15 @@ int main( int argc, char* args[] )
                     {
                         quit = true;
                     }
+
+                    bar.handleEvent( e );
                 }
 
                 //Clear screen
                 SDL_SetRenderDrawColor( gRenderer, 0x00, 0x00, 0x00, 0x00 );
                 SDL_RenderClear( gRenderer );
 
+                bar.move();
                 bar.render();
 
                 //Update screen
