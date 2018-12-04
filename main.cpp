@@ -4,6 +4,8 @@
 #include <string>
 #include <cmath>
 #include "PlayerBar.h"
+#include "Ball.h"
+#include "Texture.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -23,6 +25,8 @@ SDL_Window* gWindow = NULL;
 
 //The window renderer
 SDL_Renderer* gRenderer = NULL;
+
+Texture* ballTexture = NULL;
 
 bool init()
 {
@@ -123,6 +127,11 @@ int main( int argc, char* args[] )
             SDL_Event e;
 
             PlayerBar bar(gRenderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+            Texture ballTexture(gRenderer);
+            Ball ball(SCREEN_WIDTH, SCREEN_HEIGHT);
+
+            ballTexture.loadFromFile("resources/dot.bmp");
+            ball.setTexture(&ballTexture);
             //While application is running
             while( !quit )
             {
@@ -144,6 +153,8 @@ int main( int argc, char* args[] )
 
                 bar.move();
                 bar.render();
+
+                ball.render();
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );
