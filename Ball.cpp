@@ -46,8 +46,8 @@ void Ball::move() {
         if(collider->collides(collisionBox)){
             x = originalX;
             y = originalY;
-            velocityX *= -1;
             velocityY *= -1;
+            x += velocityX;
             y += velocityY;
         }
     }
@@ -62,6 +62,6 @@ void Ball::addCollider(Collider* collider) {
 void Ball::defineCollisionBox() {
     this->collisionBox.x = x-radius;
     this->collisionBox.y = y-radius;
-    this->collisionBox.w = radius*2+1;
-    this->collisionBox.h = radius*2+1;
+    this->collisionBox.w = radius*2;
+    this->collisionBox.h = radius*2;
 }

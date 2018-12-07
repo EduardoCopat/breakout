@@ -157,8 +157,10 @@ int main( int argc, char* args[] )
                 bar.move();
                 bar.render();
 
-                ball.render();
+
+
                 ball.move();
+                ball.render();
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );
