@@ -129,9 +129,11 @@ int main( int argc, char* args[] )
             PlayerBar bar(gRenderer, SCREEN_WIDTH, SCREEN_HEIGHT);
             Texture ballTexture(gRenderer);
             Ball ball(SCREEN_WIDTH, SCREEN_HEIGHT);
+            //ball.addCollider(bar.getCollider());
 
             ballTexture.loadFromFile("resources/dot.bmp");
             ball.setTexture(&ballTexture);
+
             //While application is running
             while( !quit )
             {
@@ -155,6 +157,7 @@ int main( int argc, char* args[] )
                 bar.render();
 
                 ball.render();
+                ball.move();
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );

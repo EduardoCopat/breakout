@@ -63,7 +63,7 @@ file(COPY ${PROJECT_SOURCE_DIR}/lib/SDL2_mixer-2.0.4/i686-w64-mingw32/bin/ DESTI
 # END SDL
 file(COPY resources DESTINATION /)
 
-add_executable(Breakout main.cpp PlayerBar.cpp PlayerBar.h Ball.cpp Ball.h Texture.cpp Texture.h)
+add_executable(Breakout main.cpp PlayerBar.cpp PlayerBar.h Ball.cpp Ball.h Texture.cpp Texture.h Collider.cpp Collider.h)
 target_link_libraries(Breakout ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${SDL2_MIXER_LIBRARIES} mingw32  )
 
 

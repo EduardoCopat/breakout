@@ -4,6 +4,8 @@
 
 #include <SDL_render.h>
 #include "Texture.h"
+#include "Collider.h"
+//#include <vector>
 
 class Ball {
 public:
@@ -15,6 +17,8 @@ public:
 
     void move();
 
+    //void addCollider(Collider collider);
+
 private:
     SDL_Renderer *renderer;
     int windowWidth;
@@ -23,9 +27,11 @@ private:
     int barHeight;
     static const int SPEED = 10;
     int velocityX;
+    int velocityY;
     int x;
     int y;
     Texture *texture;
+    //std::vector<Collider> colliders = {};
 };
 
 

@@ -13,6 +13,8 @@ PlayerBar::PlayerBar(SDL_Renderer *renderer, int windowWidth, int windowHeight) 
     this->x = windowWidth / 2 - barWidth / 2;
     this->y = windowHeight - 50;
     this->velocityX = 0;
+    //this->collider.setCoordinates(x,y);
+    //this->collider.setSize(x+barWidth, y+barHeight);
 }
 
 void PlayerBar::render() {
@@ -54,4 +56,8 @@ void PlayerBar::handleEvent(SDL_Event event) {
             case SDLK_RIGHT: velocityX -= SPEED; break;
         }
     }
+}
+
+Collider PlayerBar::getCollider() {
+    return collider;
 }

@@ -8,6 +8,7 @@
 
 #include <SDL_render.h>
 #include <SDL_events.h>
+#include "Collider.h"
 
 class PlayerBar {
 public:
@@ -17,6 +18,8 @@ public:
     void handleEvent(SDL_Event event);
 
     void move();
+
+    Collider getCollider();
 
 private:
     SDL_Renderer *renderer;
@@ -28,6 +31,7 @@ private:
     int velocityX;
     int x;
     int y;
+    Collider collider;
 };
 
 
