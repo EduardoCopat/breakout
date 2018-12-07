@@ -1,17 +1,54 @@
-//
-// Created by Copat on 12/6/2018.
-//
-
+#include <cstdio>
 #include "Collider.h"
 
-void Collider::setCoordinates(int x, int y) {
-    rect->x = x;
-    rect->y = y;
+bool Collider::collides(SDL_Rect other) {
+    //The sides of the rectangles
+    int leftA, leftB;
+    int rightA, rightB;
+    int topA, topB;
+    int bottomA, bottomB;
+
+    //Calculate the sides of rect A
+    leftA = this->rect.x;
+    rightA = this->rect.x + this->rect.w;
+    topA = this->rect.y;
+    bottomA = this->rect.y + this->rect.h;
+
+    //Calculate the sides of rect B
+    leftB = other.x;
+    rightB = other.x + other.w;
+    topB = other.y;
+    bottomB = other.y + other.h;
+
+    //If any of the sides from A are outside of B
+    if( bottomA <= topB )
+    {
+        return false;
+    }
+
+    if( topA >= bottomB )
+    {
+        return false;
+    }
+
+    if( rightA <= leftB )
+    {
+        return false;
+    }
+
+    if( leftA >= rightB )
+    {
+        return false;
+    }
+
+    //If none of the sides from A are outside B
+    return true;
+
 }
 
-
-void Collider::setSize(int w, int h) {
-    rect->w = w;
-    rect->h = h;
+void Collider::setBox(SDL_Rect box) {
+    this->rect.x = box.x;
+    this->rect.y = box.y;
+    this->rect.w = box.w;
+    this->rect.h = box.h;
 }
-

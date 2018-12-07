@@ -19,7 +19,7 @@ public:
 
     void move();
 
-    Collider getCollider();
+    Collider* getCollider();
 
 private:
     SDL_Renderer *renderer;
@@ -32,6 +32,10 @@ private:
     int x;
     int y;
     Collider collider;
+
+    void defineCollisionBox();
+
+    SDL_Rect collisionBox = {0,0,0,0};
 };
 
 

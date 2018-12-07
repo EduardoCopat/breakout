@@ -13,8 +13,8 @@ PlayerBar::PlayerBar(SDL_Renderer *renderer, int windowWidth, int windowHeight) 
     this->x = windowWidth / 2 - barWidth / 2;
     this->y = windowHeight - 50;
     this->velocityX = 0;
-    //this->collider.setCoordinates(x,y);
-    //this->collider.setSize(x+barWidth, y+barHeight);
+    defineCollisionBox();
+
 }
 
 void PlayerBar::render() {
@@ -33,6 +33,7 @@ void PlayerBar::move() {
         //Move back
         x -= velocityX;
     }
+    defineCollisionBox();
 }
 
 void PlayerBar::handleEvent(SDL_Event event) {
@@ -58,6 +59,14 @@ void PlayerBar::handleEvent(SDL_Event event) {
     }
 }
 
-Collider PlayerBar::getCollider() {
-    return collider;
+Collider* PlayerBar::getCollider() {
+    return &collider;
+}
+
+void PlayerBar::defineCollisionBox() {
+    this->collisionBox.x = x;
+    this->collisionBox.y = y;
+    this->collisionBox.w = barWidth;
+    this->collisionBox.h = barHeight;
+    this->collider.setBox(collisionBox);
 }

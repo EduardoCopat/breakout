@@ -1,7 +1,3 @@
-//
-// Created by Copat on 12/6/2018.
-//
-
 #ifndef BREAKOUT_COLLIDER_H
 #define BREAKOUT_COLLIDER_H
 
@@ -10,10 +6,12 @@
 
 class Collider{
 public:
-    void setCoordinates(int x, int y);
-    void setSize(int w, int h);
+    void setBox(SDL_Rect rect);
+
+    bool collides(SDL_Rect rect);
+
 private:
-    SDL_Rect *rect = {};
+    SDL_Rect rect = {0,0,0,0};
 };
 
 

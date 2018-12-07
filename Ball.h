@@ -5,7 +5,7 @@
 #include <SDL_render.h>
 #include "Texture.h"
 #include "Collider.h"
-//#include <vector>
+#include <vector>
 
 class Ball {
 public:
@@ -17,7 +17,7 @@ public:
 
     void move();
 
-    //void addCollider(Collider collider);
+    void addCollider(Collider *collider);
 
 private:
     SDL_Renderer *renderer;
@@ -31,7 +31,11 @@ private:
     int x;
     int y;
     Texture *texture;
-    //std::vector<Collider> colliders = {};
+    std::vector<Collider*> colliders = {};
+
+    void defineCollisionBox();
+
+    SDL_Rect collisionBox = {0,0,0,0};
 };
 
 

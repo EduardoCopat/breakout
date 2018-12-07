@@ -129,7 +129,8 @@ int main( int argc, char* args[] )
             PlayerBar bar(gRenderer, SCREEN_WIDTH, SCREEN_HEIGHT);
             Texture ballTexture(gRenderer);
             Ball ball(SCREEN_WIDTH, SCREEN_HEIGHT);
-            //ball.addCollider(bar.getCollider());
+            Collider *collider = bar.getCollider();
+            ball.addCollider(collider);
 
             ballTexture.loadFromFile("resources/dot.bmp");
             ball.setTexture(&ballTexture);
