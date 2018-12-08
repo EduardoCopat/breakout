@@ -2,6 +2,8 @@
 #include "Collider.h"
 
 bool Collider::collides(SDL_Rect other) {
+    if(this->disabled == true)
+        return false;
     //The sides of the rectangles
     int leftA, leftB;
     int rightA, rightB;
@@ -42,7 +44,9 @@ bool Collider::collides(SDL_Rect other) {
     }
 
     //If none of the sides from A are outside B
+    this->collided = true;
     return true;
+
 
 }
 
@@ -52,3 +56,13 @@ void Collider::setBox(SDL_Rect box) {
     this->rect.w = box.w;
     this->rect.h = box.h;
 }
+
+bool Collider::hasCollided() {
+    return this->collided;
+}
+
+void Collider::disable(){
+    this->disabled = true;
+}
+
+

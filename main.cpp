@@ -6,6 +6,7 @@
 #include "PlayerBar.h"
 #include "Ball.h"
 #include "Texture.h"
+#include "Brick.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -130,12 +131,23 @@ int main( int argc, char* args[] )
             Texture ballTexture(gRenderer);
             Ball ball(SCREEN_WIDTH, SCREEN_HEIGHT);
             Collider *collider = bar.getCollider();
-            ball.addCollider(collider);
+             ball.addCollider(collider);
 
             ballTexture.loadFromFile("resources/dot.bmp");
             ball.setTexture(&ballTexture);
             ball.setRender(gRenderer);
 
+            std::vector<Brick*> bricks = {};
+
+            int brickOffsetX = 100;
+            for(int i = 0; i<8;i++){
+                Brick *brick = new Brick(brickOffsetX,80);
+                brick->setRender(gRenderer);
+                brickOffsetX += 55;
+                bricks.push_back(brick);
+                Collider *collider = brick->getCollider();
+                ball.addCollider(collider);
+            }
 
             //While application is running
             while( !quit )
@@ -162,6 +174,9 @@ int main( int argc, char* args[] )
                 ball.render();
                 bar.render();
 
+                for(Brick *brick : bricks) {
+                    brick->render();
+                }
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );
