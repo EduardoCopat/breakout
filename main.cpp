@@ -107,6 +107,7 @@ void close()
 
 int main( int argc, char* args[] )
 {
+
     //Start up SDL and create window
     if( !init() )
     {

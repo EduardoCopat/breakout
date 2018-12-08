@@ -1,5 +1,6 @@
 #include "Ball.h"
 
+
 struct Circle
 {
     int x, y;
@@ -30,6 +31,8 @@ void Ball::setTexture(Texture *texture) {
     this->texture = texture;
 }
 
+
+
 void Ball::move() {
     int originalX = x;
     int originalY = y;
@@ -40,11 +43,13 @@ void Ball::move() {
         x = originalX;
         y = originalY;
         velocityX *= -1;
+        Beep(523,15); // 523 hertz (C5) for 500 milliseconds
     }
     if(y == 0){
         x = originalX;
         y = originalY;
         velocityY *= -1;
+        Beep(523,15); // 523 hertz (C5) for 500 milliseconds
     }
 
     if(y == windowHeight){
@@ -55,6 +60,8 @@ void Ball::move() {
 
     for(Collider* collider : colliders) {
         if(collider->collides(collisionBox)){
+            Beep(329,15); // 523 hertz (C5) for 500 milliseconds
+
             x = originalX;
             y = originalY;
 
@@ -66,6 +73,7 @@ void Ball::move() {
 
 
 }
+
 
 void Ball::addCollider(Collider* collider) {
     this->colliders.push_back(collider);

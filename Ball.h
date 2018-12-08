@@ -6,6 +6,8 @@
 #include "Texture.h"
 #include "Collider.h"
 #include <vector>
+#include <afxres.h>
+#include <iostream>
 
 class Ball {
 public:
