@@ -134,6 +134,8 @@ int main( int argc, char* args[] )
 
             ballTexture.loadFromFile("resources/dot.bmp");
             ball.setTexture(&ballTexture);
+            ball.setRender(gRenderer);
+
 
             //While application is running
             while( !quit )
@@ -155,12 +157,11 @@ int main( int argc, char* args[] )
                 SDL_RenderClear( gRenderer );
 
                 bar.move();
+                ball.move();
+
+                ball.render();
                 bar.render();
 
-
-
-                ball.move();
-                ball.render();
 
                 //Update screen
                 SDL_RenderPresent( gRenderer );

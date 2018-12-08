@@ -19,6 +19,8 @@ public:
 
     void addCollider(Collider *collider);
 
+    void setRender(SDL_Renderer* renderer);
+
 private:
     SDL_Renderer *renderer;
     int windowWidth;

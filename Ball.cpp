@@ -12,6 +12,11 @@ Ball::Ball(int windowWidth, int windowHeight) {
     this->radius = 5;
     this->x = windowWidth / 2;
     this->y = windowHeight - 55;
+
+    //this->x = windowWidth / 2 - 65;
+    //this->y = windowHeight - 35;
+
+
     this->velocityX = 5;
     this->velocityY = -5;
     defineCollisionBox();
@@ -42,16 +47,19 @@ void Ball::move() {
         velocityY *= -1;
     }
 
+    defineCollisionBox();
+
     for(Collider* collider : colliders) {
         if(collider->collides(collisionBox)){
             x = originalX;
             y = originalY;
+
             velocityY *= -1;
-            x += velocityX;
             y += velocityY;
         }
     }
-    defineCollisionBox();
+
+
 
 }
 
@@ -64,4 +72,8 @@ void Ball::defineCollisionBox() {
     this->collisionBox.y = y-radius;
     this->collisionBox.w = radius*2;
     this->collisionBox.h = radius*2;
+}
+
+void Ball::setRender(SDL_Renderer *renderer) {
+    this->renderer = renderer;
 }
