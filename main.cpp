@@ -131,7 +131,7 @@ int main( int argc, char* args[] )
             Texture ballTexture(gRenderer);
             Ball ball(SCREEN_WIDTH, SCREEN_HEIGHT);
             Collider *collider = bar.getCollider();
-             ball.addCollider(collider);
+            ball.addCollider(collider);
 
             ballTexture.loadFromFile("resources/dot.bmp");
             ball.setTexture(&ballTexture);
@@ -173,8 +173,17 @@ int main( int argc, char* args[] )
                 SDL_SetRenderDrawColor( gRenderer, 0x00, 0x00, 0x00, 0x00 );
                 SDL_RenderClear( gRenderer );
 
-                bar.move();
-                ball.move();
+                try {
+                    // protected code
+
+                    // catch block
+                    bar.move();
+                    ball.move();
+                }
+                catch( int e1 ) {
+                    bar.reset();
+                    ball.reset();
+                }
 
                 ball.render();
                 bar.render();

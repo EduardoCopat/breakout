@@ -21,6 +21,8 @@ public:
 
     void setRender(SDL_Renderer* renderer);
 
+    void reset();
+
 private:
     SDL_Renderer *renderer;
     int windowWidth;

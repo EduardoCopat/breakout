@@ -8,13 +8,16 @@ PlayerBar::PlayerBar(SDL_Renderer *renderer, int windowWidth, int windowHeight) 
     this->renderer = renderer;
     this->windowWidth = windowWidth;
     this->windowHeight = windowHeight;
-    this->barWidth = 100;
-    this->barHeight = 10;
-    this->x = windowWidth / 2 - barWidth / 2;
-    this->y = windowHeight - 50;
+    reset();
     this->velocityX = 0;
     defineCollisionBox();
+}
 
+void PlayerBar::reset() {
+    barWidth = 100;
+    barHeight = 10;
+    x = windowWidth / 2 - barWidth / 2;
+    y = windowHeight - 50;
 }
 
 void PlayerBar::render() {

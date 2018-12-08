@@ -10,16 +10,16 @@ Ball::Ball(int windowWidth, int windowHeight) {
     this->windowWidth = windowWidth;
     this->windowHeight = windowHeight;
     this->radius = 5;
-    this->x = windowWidth / 2;
-    this->y = windowHeight - 55;
-
-    //this->x = windowWidth / 2 - 65;
-    //this->y = windowHeight - 35;
-
+    reset();
 
     this->velocityX = 5;
     this->velocityY = -5;
     defineCollisionBox();
+}
+
+void Ball::reset() {
+    x = windowWidth / 2;
+    y = windowHeight - 55;
 }
 
 void Ball::render() {
@@ -41,10 +41,14 @@ void Ball::move() {
         y = originalY;
         velocityX *= -1;
     }
-    if(y == windowHeight || y == 0){
+    if(y == 0){
         x = originalX;
         y = originalY;
         velocityY *= -1;
+    }
+
+    if(y == windowHeight){
+        throw 1;
     }
 
     defineCollisionBox();
