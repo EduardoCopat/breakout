@@ -140,13 +140,18 @@ int main( int argc, char* args[] )
             std::vector<Brick*> bricks = {};
 
             int brickOffsetX = 100;
-            for(int i = 0; i<8;i++){
-                Brick *brick = new Brick(brickOffsetX,80);
-                brick->setRender(gRenderer);
-                brickOffsetX += 55;
-                bricks.push_back(brick);
-                Collider *collider = brick->getCollider();
-                ball.addCollider(collider);
+            int brickOffsetY = 80;
+            for(int i = 0; i<5;i++){
+                for(int j = 0; j < 8; j++) {
+                    Brick *brick = new Brick(brickOffsetX, brickOffsetY);
+                    brick->setRender(gRenderer);
+                    brickOffsetX += 55;
+                    bricks.push_back(brick);
+                    Collider *collider = brick->getCollider();
+                    ball.addCollider(collider);
+                }
+                brickOffsetY += 20;
+                brickOffsetX = 100;
             }
 
             //While application is running
